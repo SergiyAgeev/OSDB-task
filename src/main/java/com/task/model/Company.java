@@ -24,17 +24,17 @@ import lombok.experimental.FieldDefaults;
 @Table(name = "company")
 @Entity
 public class Company {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER(10) UNSIGNED")
-	long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INTEGER(10) UNSIGNED")
+    long id;
 
-	@NotNull
-	@Column(name = "title")
-	String title;
+    @NotNull
+    @Column(name = "title")
+    String title;
 
-	@NotNull
-	@Column(name = "founded")
-	LocalDate founded;
+    @NotNull
+    @Column(name = "founded")
+    LocalDate founded;
 
 }

@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class CompanyServiceImplementationTest {
 
-	@Test
-	void test(){
+    @Test
+    void test() {
 
-	}
+    }
 
 }

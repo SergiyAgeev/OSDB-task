@@ -11,14 +11,14 @@ import java.util.Optional;
 
 public interface CompanyService {
 
-	Company getCompanyById(long id);
+    Company getCompanyById(long id);
 
-	Page<Company> getCompanyList(int pageNo, int pageSize, String sortBy);
+    Page<Company> getCompanyList(int pageNo, int pageSize, String sortBy);
 
-	ResponseEntity<Company> createCompany(Company company);
+    ResponseEntity<Company> createCompany(Company company);
 
-	ResponseEntity<String> updateExistingCompany(long id, Company company);
+    ResponseEntity<String> updateExistingCompany(long id, Company company);
 
-	ResponseEntity<String> deleteExistingCompany(long id);
+    ResponseEntity<String> deleteExistingCompany(long id);
 
 }

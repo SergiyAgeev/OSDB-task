@@ -24,41 +24,41 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RequestMapping("/api/v1/companies")
 public class CompanyController {
-	private final CompanyService companyService;
+    private final CompanyService companyService;
 
-	@ApiOperation(value = "Get all companies, you can modify result by using params:" +
-			" startPage; pageSize; sortBy, sortMethod(asc, desc)")
-	@GetMapping
-	public ResponseEntity<List<Company>> get(@RequestParam(defaultValue = "0", required = false) int page,
-											 @RequestParam(defaultValue = "20", required = false) int size,
-											 @RequestParam(defaultValue = "id,desc", required = false) String sort) {
-		Page<Company> paged = companyService.getCompanyList(page, size, sort);
-		return new ResponseEntity<>(paged.getContent(), new HttpHeaders(), HttpStatus.OK);
-	}
+    @ApiOperation(value = "Get all companies, you can modify result by using params:"
+            + " startPage; pageSize; sortBy, sortMethod(asc, desc)")
+    @GetMapping
+    public ResponseEntity<List<Company>> get(@RequestParam(defaultValue = "0", required = false) int page,
+            @RequestParam(defaultValue = "20", required = false) int size,
+            @RequestParam(defaultValue = "id,desc", required = false) String sort) {
+        Page<Company> paged = companyService.getCompanyList(page, size, sort);
+        return new ResponseEntity<>(paged.getContent(), new HttpHeaders(), HttpStatus.OK);
+    }
 
-	@ApiOperation(value = "Get single company by company id", response = Company.class)
-	@GetMapping(value = "/{companyId}")
-	public Company getSingleCompany(@PathVariable("companyId") long companyId) {
-		return companyService.getCompanyById(companyId);
-	}
+    @ApiOperation(value = "Get single company by company id", response = Company.class)
+    @GetMapping(value = "/{companyId}")
+    public Company getSingleCompany(@PathVariable("companyId") long companyId) {
+        return companyService.getCompanyById(companyId);
+    }
 
-	@ApiOperation(value = "Create company", response = Company.class)
-	@PostMapping
-	public ResponseEntity<Company> createCompany(@RequestBody Company company) {
-		return companyService.createCompany(company);
-	}
+    @ApiOperation(value = "Create company", response = Company.class)
+    @PostMapping
+    public ResponseEntity<Company> createCompany(@RequestBody Company company) {
+        return companyService.createCompany(company);
+    }
 
-	@ApiOperation(value = "Update company by id", response = Company.class)
-	@PutMapping(value = "/{companyId}")
-	public ResponseEntity<String> updateCompany(@PathVariable("companyId") long companyId,
-												@RequestBody Company company) {
-		return companyService.updateExistingCompany(companyId, company);
-	}
+    @ApiOperation(value = "Update company by id", response = Company.class)
+    @PutMapping(value = "/{companyId}")
+    public ResponseEntity<String> updateCompany(@PathVariable("companyId") long companyId,
+            @RequestBody Company company) {
+        return companyService.updateExistingCompany(companyId, company);
+    }
 
-	@ApiOperation(value = "Delete company by id")
-	@DeleteMapping(value = "/{companyId}")
-	public ResponseEntity<String> deleteCompany(@PathVariable("companyId") long companyId) {
-		return companyService.deleteExistingCompany(companyId);
-	}
+    @ApiOperation(value = "Delete company by id")
+    @DeleteMapping(value = "/{companyId}")
+    public ResponseEntity<String> deleteCompany(@PathVariable("companyId") long companyId) {
+        return companyService.deleteExistingCompany(companyId);
+    }
 
 }
