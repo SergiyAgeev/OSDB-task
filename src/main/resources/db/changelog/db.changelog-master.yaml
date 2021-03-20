@@ -1,0 +1,129 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - changeSet:
+      id: 1
+      author: root
+      changes:
+        - createTable:
+            tableName: company
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    unique: false
+                    nullable: false
+              - column:
+                  name: founded
+                  type: date
+                  constraints:
+                    unique: false
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: sergiy_ageev
+      comment: "create dummy data"
+      changes:
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "LG"
+              - column:
+                  name: founded
+                  value: "2011-11-11"
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "Super Nova"
+              - column:
+                  name: founded
+                  value: "2012-12-12"
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "Cubic"
+              - column:
+                  name: founded
+                  value: "2021-03-03"
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "Exile"
+              - column:
+                  name: founded
+                  value: "1999-09-10"
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "Trust"
+              - column:
+                  name: founded
+                  value: "2008-08-08"
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "Loop"
+              - column:
+                  name: founded
+                  value: "2021-03-17"
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "Agile"
+              - column:
+                  name: founded
+                  value: "1990-01-01"
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "ACID"
+              - column:
+                  name: founded
+                  value: "2006-06-16"
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "Super Nova"
+              - column:
+                  name: founded
+                  value: "2012-12-12"
+        - insert:
+            tableName: company
+            columns:
+              - column:
+                  name: title
+                  value: "The Last"
+              - column:
+                  name: founded
+                  value: "2015-05-25"
+
+      rollback:
+        - delete:
+            tableName: company
+            where: title in ('LG', 'Super Nova', 'Cubic', 'Exile', 'Trust', 'Loop', 'Agile', 'ACID', 'The Last')
