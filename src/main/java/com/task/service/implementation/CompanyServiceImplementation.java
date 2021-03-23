@@ -51,7 +51,8 @@ public class CompanyServiceImplementation implements CompanyService {
     public ResponseEntity<String> updateExistingCompany(long id, Company company) {
         if (companyRepository.existsById(id)) {
             log.debug("trying to update existing company with id {}", id);
-            companyRepository.updateById(company.getTitle(), company.getFounded(), id);
+            int updatedRowCount = companyRepository.updateById(company.getTitle(), company.getFounded(), id);
+            log.debug("updated row count = {}", updatedRowCount);
             return new ResponseEntity<>("company with id " + id + " was updated successfully!", HttpStatus.OK);
         }
         throw new IllegalArgumentException("Incorrect company id attribute!");
